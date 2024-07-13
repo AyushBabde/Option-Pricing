@@ -26,11 +26,11 @@ def get_stock_data(ticker):
     return current_price, volatility
 
 # Fetch stock data
-S, sigma = get_stock_data(ticker)
+S, sigma = get_stock_data(ticker) #here S is current stock price and sigma is volatility
 
 
 def black_scholes(S, K, T, r, sigma, option_type='call'):
-    d1 = (np.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T))
+    d1 = (np.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T)) #Calculating d1 and d2 
     d2 = d1 - sigma * np.sqrt(T)
 
     if option_type == 'call':
