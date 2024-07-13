@@ -19,10 +19,10 @@ r = ten_year_treasury_rate.iloc[-1] #riskfreerate
 
 #Function to calculate Volatility using historical Data
 def get_stock_data(ticker):
-    stock = yf.Ticker(ticker)
-    hist = stock.history(period="1y")
-    current_price = stock.history(period="1d")['Close'][0]
-    returns = hist['Close'].pct_change().dropna()
+    stock = yf.Ticker(ticker)   
+    hist = stock.history(period="1y") # Getting historical data
+    current_price = stock.history(period="1d")['Close'][0] #getting current stock price
+    returns = hist['Close'].pct_change().dropna()  
     volatility = returns.std() * np.sqrt(252)  # Annualize the volatility
 
     return current_price, volatility
