@@ -3,7 +3,7 @@ import numpy as np
 from scipy.stats import norm
 from fredapi import Fred
 
-# User inputs
+#Getting inputs from user 
 ticker = input("Enter the stock ticker: ").strip().upper()
 K = float(input("Enter the strike price: "))
 T = float(input("Enter time to maturity (in years): "))
@@ -11,7 +11,7 @@ T = float(input("Enter time to maturity (in years): "))
 option_type = input("Enter the option type ('call' or 'put'): ").strip().lower()
 
 
-#Getting risk_free_rate using Fred_Api
+#Insted of getting risk free rate as a input we are getting risk_free_rate using Fred_Api
 fred = Fred(api_key = '1b3896dbdbd6878090ae00d80913a34b')
 ten_year_treasury_rate = fred.get_series_latest_release('GS10')/100
 r = ten_year_treasury_rate.iloc[-1] #riskfreerate
