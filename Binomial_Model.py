@@ -12,7 +12,7 @@ N = int(input("Enter the number of steps in the binomial model: "))
 option_type = input("Enter the option type ('call' or 'put'): ").strip().lower()
 
 
-#Getting risk_free_rate using Fred_Api
+#Insted of asking for risk free rate from user Getting risk_free_rate using Fred_Api
 fred = Fred(api_key = '1b3896dbdbd6878090ae00d80913a34b')
 ten_year_treasury_rate = fred.get_series_latest_release('GS10')/100
 r = ten_year_treasury_rate.iloc[-1] #riskfreerate
@@ -32,8 +32,8 @@ S, sigma = get_stock_data(ticker) #here 'S' is Current stock price & sigma is vo
 
 def binomial_option_pricing(S, K, T, r, sigma, N, option_type='call'):
     dt = T / N
-    u = np.exp(sigma * np.sqrt(dt))  # Up factor
-    d = 1 / u  # Down factor
+    u = np.exp(sigma * np.sqrt(dt))     # Up factor
+    d = 1 / u                           # Down factor
     p = (np.exp(r * dt) - d) / (u - d)  # Risk-neutral probability
 
     # Initialize asset prices at maturity
